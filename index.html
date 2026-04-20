@@ -3,224 +3,298 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rachael Foo — Attainable Systems</title>
-  <meta name="description" content="Rachael Foo — management consultant at Attainable Systems.">
+  <title>Rachael X. Foo — Attainable Systems</title>
+  <meta name="description" content="Strategic ops consulting for growth-stage companies. Past investor, current operator.">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #fafaf9;
-      --color-text: #1c1917;
-      --color-muted: #57534e;
-      --color-accent: #0c4a6e;
-      --color-accent-light: #e0f2fe;
-      --color-border: #d6d3d1;
-      --font-sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      --font-serif: Georgia, 'Times New Roman', serif;
-      --max-w: 720px;
+      --bg: #ffffff;
+      --ink: #0a0a0a;
+      --muted: #5a5a5a;
+      --faint: #e2e2e2;
+      --surface: #f2f2f2;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-sans);
-      background: var(--color-bg);
-      color: var(--color-text);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
       line-height: 1.7;
-      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--faint);
+    }
+
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 17px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-entity {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .hero {
+      padding-top: 140px;
+      padding-bottom: 80px;
+      border-bottom: 0.5px solid var(--faint);
+    }
+
+    .hero-kicker {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(42px, 6vw, 64px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      color: var(--ink);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .hero-tagline {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 14px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .hero-tagline strong { color: var(--ink); font-weight: 500; }
+
+    .hero-link {
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+
+    .hero-link a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    .hero-link a:hover { color: var(--ink); }
+
+    .cta {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 12px 24px;
+      background: var(--ink);
+      border: 0.5px solid var(--ink);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: var(--bg);
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.4s forwards;
+    }
+
+    .cta:hover { background: transparent; color: var(--ink); }
+
+    .track, .services, .for {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      border-bottom: 0.5px solid var(--faint);
+    }
+
+    .section-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    .proof-grid, .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .proof-card {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 24px 26px;
+    }
+
+    .proof-company {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .proof-role {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #aaaaaa;
+      margin-bottom: 14px;
+    }
+
+    .proof-text { font-size: 13px; color: var(--ink); line-height: 1.6; }
+    .proof-text strong { font-weight: 500; }
+
+    .service-card {
+      border: 0.5px solid var(--faint);
+      border-radius: 10px;
+      padding: 24px 26px;
       display: flex;
       flex-direction: column;
+      transition: border-color 0.2s ease;
     }
 
-    header {
-      border-bottom: 1px solid var(--color-border);
-      padding: 1.5rem 2rem;
+    .service-card:hover { border-color: #888; }
+
+    .service-name { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+    .service-desc { font-size: 13px; color: var(--muted); line-height: 1.6; flex: 1; }
+
+    .service-model {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 0.5px solid var(--faint);
     }
 
-    header .inner {
-      max-width: var(--max-w);
+    .for-text { font-size: 16px; font-weight: 300; color: var(--muted); line-height: 1.75; max-width: 600px; }
+    .for-text strong { color: var(--ink); font-weight: 500; }
+
+    footer {
+      max-width: 860px;
       margin: 0 auto;
+      padding: 40px 48px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--color-accent);
-      text-decoration: none;
+    .footer-contact { font-size: 13px; color: var(--muted); line-height: 1.8; }
+    .footer-contact a { color: var(--ink); text-decoration: none; font-weight: 500; }
+    .footer-contact a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .footer-note { font-size: 11px; color: #aaaaaa; text-align: right; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    nav a {
-      color: var(--color-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      margin-left: 1.5rem;
-      transition: color 0.2s;
+    @media (max-width: 640px) {
+      nav { padding: 16px 24px; }
+      section { padding: 0 24px; }
+      footer { padding: 36px 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+      .hero { padding-top: 110px; padding-bottom: 56px; }
+      .proof-grid, .services-grid { grid-template-columns: 1fr; }
+      .footer-note { text-align: left; }
     }
-    nav a:hover { color: var(--color-accent); }
-
-    main {
-      flex: 1;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    h1 {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      font-weight: 600;
-      line-height: 1.3;
-      margin-bottom: 0.5rem;
-      color: var(--color-accent);
-    }
-
-    .tagline {
-      font-size: 1.1rem;
-      color: var(--color-muted);
-      margin-bottom: 2.5rem;
-    }
-
-    section { margin-bottom: 2.5rem; }
-
-    section h2 {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      color: var(--color-text);
-    }
-
-    section p {
-      color: var(--color-muted);
-      font-size: 0.95rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    @media (max-width: 600px) {
-      .services { grid-template-columns: 1fr; }
-    }
-
-    .service {
-      border: 1px solid var(--color-border);
-      border-radius: 6px;
-      padding: 1.25rem;
-      background: white;
-    }
-
-    .service h3 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .service p {
-      font-size: 0.85rem;
-      color: var(--color-muted);
-      margin: 0;
-    }
-
-    .contact-block {
-      background: white;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      padding: 2rem;
-    }
-
-    .contact-block a {
-      color: var(--color-accent);
-      text-decoration: none;
-    }
-    .contact-block a:hover { text-decoration: underline; }
-
-    footer {
-      border-top: 1px solid var(--color-border);
-      padding: 1.5rem 2rem;
-      text-align: center;
-      color: var(--color-muted);
-      font-size: 0.8rem;
-    }
-
-    footer a {
-      color: var(--color-muted);
-      text-decoration: none;
-    }
-    footer a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="inner">
-      <a href="https://attainable.systems" class="logo">Attainable Systems</a>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+  <nav>
+    <a class="nav-name" href="#">Attainable Systems</a>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-kicker">Past investor. Current operator.</p>
+    <h1 class="hero-name">Strategic ops<br>for growth-stage<br>companies.</h1>
+    <p class="hero-tagline">I find the gnarliest operational problems at growth-stage companies and surgically work to eliminate them, diagnosing root cause and implementing the actual fix across GTM, finance, and bizops.</p>
+    <p class="hero-link">(<a href="https://outlierspath.com/2025/04/08/heat-seeking-missile-for-pain/" target="_blank" rel="noopener">What this looks like in practice</a>)</p>
+    <a class="cta" href="mailto:rachael@attainable.systems">Get in touch</a>
+  </section>
+
+  <section class="track">
+    <p class="section-label">Track record</p>
+    <div class="proof-grid">
+      <div class="proof-card">
+        <p class="proof-company">Audible / Amazon</p>
+        <p class="proof-role">Head of Business Ops</p>
+        <p class="proof-text">Took over a scope previously managed by 5 people. Now run it solo by automating and redesigning processes. One example: automated goal reporting and status tracking across <strong>120+ stakeholders,</strong> recovering <strong>40 hrs/week</strong> of manual work.</p>
+      </div>
+      <div class="proof-card">
+        <p class="proof-company">Frame.io (acquired by Adobe)</p>
+        <p class="proof-role">GTM Ops</p>
+        <p class="proof-text">Turned around 14-person SDR team from 30% to 120% attainment (<strong>45% pipeline growth</strong>) in month one. Rebuilt territory segmentation and Salesforce infrastructure for mid-market and enterprise in <strong>10 weeks</strong> (avg. implementation: 1 year).</p>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <h1>Rachael Foo</h1>
-    <p class="tagline">Management &amp; Organizational Consulting</p>
-
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        I work with organizations to strengthen their management practices,
-        improve cross-team alignment, and build the operational foundations
-        that let good work happen consistently.
-      </p>
-      <p>
-        With a background in [areas of expertise], I bring a practical approach
-        to organizational challenges — focused on clarity, accountability, and
-        outcomes that last.
-      </p>
-    </section>
-
-    <section id="services">
-      <h2>What I Do</h2>
-      <div class="services">
-        <div class="service">
-          <h3>Organizational Design</h3>
-          <p>Structuring teams and roles so that accountability and decision-making are clear.</p>
-        </div>
-        <div class="service">
-          <h3>Process Improvement</h3>
-          <p>Finding and fixing the friction points that slow your organization down.</p>
-        </div>
-        <div class="service">
-          <h3>Change Management</h3>
-          <p>Guiding teams through transitions with minimal disruption and maximum buy-in.</p>
-        </div>
-        <div class="service">
-          <h3>Leadership Coaching</h3>
-          <p>Helping managers build the habits and systems that make their teams effective.</p>
-        </div>
+  <section class="services">
+    <p class="section-label">How I work with you</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <p class="service-name">Ops Diagnostic</p>
+        <p class="service-desc">A structured diagnostic engagement. You define the problem; I find the root cause and deliver a plan for how your organization can implement a fix. Scope and timeline set together at kickoff.</p>
+        <p class="service-model">Fixed fee — scoped at kickoff</p>
       </div>
-    </section>
-
-    <section id="contact">
-      <h2>Get in Touch</h2>
-      <div class="contact-block">
-        <p>I'd love to learn about the challenges you're working through.</p>
-        <p style="margin-top: 0.75rem;">
-          <a href="mailto:rachael@attainable.systems">rachael@attainable.systems</a>
-        </p>
+      <div class="service-card">
+        <p class="service-name">Fractional Strategic Ops</p>
+        <p class="service-desc">Ongoing engagement. We agree on scope and success criteria at kickoff, meet on a fixed cadence, and reassess every 90 days.</p>
+        <p class="service-model">Monthly retainer — 90-day reassessment</p>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <section class="for">
+    <p class="section-label">Who this is for</p>
+    <p class="for-text">Post-PMF, growth-stage businesses that need to <strong>build or scale GTM, finance, and bizops infrastructure</strong> to keep pace with growth — and businesses that need help <strong>restructuring for efficiency in the AI-first era.</strong></p>
+  </section>
 
   <footer>
-    <a href="https://attainable.systems">&larr; attainable.systems</a>
+    <div class="footer-contact">
+      <a href="mailto:rachael@attainable.systems">rachael@attainable.systems</a><br>
+      <a href="https://www.linkedin.com/in/rxfoo/" target="_blank" rel="noopener">linkedin.com/in/rxfoo</a>
+    </div>
+    <p class="footer-note">Accepting a limited number of engagements.</p>
   </footer>
+
 </body>
 </html>
